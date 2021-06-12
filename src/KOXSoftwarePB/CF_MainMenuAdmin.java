@@ -325,7 +325,9 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_MMA_ClientCheckActionPerformed
 
     private void MMA_ClientPointsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientPointsAddActionPerformed
-        // TODO add your handling code here:
+        CF_ClientPoints CF_ClientPointsObject = new CF_ClientPoints();
+        CF_ClientPointsObject.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MMA_ClientPointsAddActionPerformed
 
     private void MMA_PriceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_PriceListActionPerformed

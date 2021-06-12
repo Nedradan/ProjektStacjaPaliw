@@ -71,7 +71,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="StudentEdit_Close_Button" alignment="1" pref="372" max="32767" attributes="0"/>
                                   <Component id="StudentEdit_NoChanges_Button" alignment="1" pref="372" max="32767" attributes="0"/>
-                                  <Component id="StudentEdit_UpdateStudent_Button" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="ClientEdit_UpdateClient_Button" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -146,7 +146,7 @@
                   </Group>
               </Group>
               <EmptySpace pref="34" max="32767" attributes="0"/>
-              <Component id="StudentEdit_UpdateStudent_Button" min="-2" pref="68" max="-2" attributes="0"/>
+              <Component id="ClientEdit_UpdateClient_Button" min="-2" pref="68" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="StudentEdit_NoChanges_Button" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -344,7 +344,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="StudentEdit_UpdateStudent_Button">
+    <Component class="javax.swing.JButton" name="ClientEdit_UpdateClient_Button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="ff" type="rgb"/>
@@ -352,7 +352,7 @@
         <Property name="text" type="java.lang.String" value="Zaktualizuj dane"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StudentEdit_UpdateStudent_ButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClientEdit_UpdateClient_ButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="StudentEdit_NoChanges_Button">

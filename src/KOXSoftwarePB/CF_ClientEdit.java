@@ -29,7 +29,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        StudentEdit_UpdateStudent_Button.setVisible(false);
+        ClientEdit_UpdateClient_Button.setVisible(false);
         
         
     
@@ -47,7 +47,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
      * @param ShowStudent Obiekt klasy CStudenciP
      * @throws e Sprawdzenie czy połączenie z bazą przebiegło pomyslnie
      */
-    public void PokazywanieStudenta(DefaultTableModel model) throws Exception{
+    public void PokazywanieKlienta(DefaultTableModel model) throws Exception{
         String what = "";
         int fromInt=1;
         String sqlQuery="";
@@ -97,7 +97,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
                     ClientEdit_Login_Text.setText(loginTemp);
                     ClientEdit_Password_Text.setText(passwordTemp);
                     ClientEdit_Password2_Text.setText(passwordTemp);
-                    StudentEdit_UpdateStudent_Button.setVisible(true);
+                    ClientEdit_UpdateClient_Button.setVisible(true);
                 }
             }
         catch (SQLException e) {
@@ -129,7 +129,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         ClientEdit_Name_Text = new javax.swing.JTextPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         ClientEdit_SurName_Text = new javax.swing.JTextPane();
-        StudentEdit_UpdateStudent_Button = new javax.swing.JButton();
+        ClientEdit_UpdateClient_Button = new javax.swing.JButton();
         StudentEdit_NoChanges_Button = new javax.swing.JButton();
         StudentEdit_Close_Button = new javax.swing.JButton();
         ClientPoints_ShowData_Button = new javax.swing.JButton();
@@ -206,11 +206,11 @@ public class CF_ClientEdit extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(ClientEdit_SurName_Text);
 
-        StudentEdit_UpdateStudent_Button.setBackground(new java.awt.Color(255, 255, 102));
-        StudentEdit_UpdateStudent_Button.setText("Zaktualizuj dane");
-        StudentEdit_UpdateStudent_Button.addActionListener(new java.awt.event.ActionListener() {
+        ClientEdit_UpdateClient_Button.setBackground(new java.awt.Color(255, 255, 102));
+        ClientEdit_UpdateClient_Button.setText("Zaktualizuj dane");
+        ClientEdit_UpdateClient_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StudentEdit_UpdateStudent_ButtonActionPerformed(evt);
+                ClientEdit_UpdateClient_ButtonActionPerformed(evt);
             }
         });
 
@@ -305,7 +305,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(StudentEdit_Close_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                                     .addComponent(StudentEdit_NoChanges_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                                    .addComponent(StudentEdit_UpdateStudent_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(ClientEdit_UpdateClient_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ClientEdit_Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -359,7 +359,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(StudentEdit_UpdateStudent_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ClientEdit_UpdateClient_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(StudentEdit_NoChanges_Button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,7 +385,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
      * @param rs Słuzy do przechowywania rezultatów kwerendy
      * @throws e Sprawdzenie czy połączenie z bazą przebiegło pomyslnie
      */
-    private void StudentEdit_UpdateStudent_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentEdit_UpdateStudent_ButtonActionPerformed
+    private void ClientEdit_UpdateClient_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientEdit_UpdateClient_ButtonActionPerformed
         int fromInt= Integer.parseInt(ClientEdit_ClientId_Text.getText());
         String name=ClientEdit_Name_Text.getText();
         String surname=ClientEdit_SurName_Text.getText();
@@ -394,8 +394,6 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         String password=ClientEdit_Password_Text.getText();
         String password2=ClientEdit_Password2_Text.getText();
         int loginUID=0;
-        showMessageDialog(null,password);
-        showMessageDialog(null,password2);
         if(password.equals(password2)==false){
             showMessageDialog(null,"Ustaw takie same hasła!!!");                        
             return;
@@ -425,14 +423,14 @@ public class CF_ClientEdit extends javax.swing.JFrame {
             String n[]={"Numer karty","Imie","Nazwisko","Pesel","Login","Hasło"};
             DefaultTableModel model=new DefaultTableModel(null,n);
             ClientEdit_ClientData_Table.setModel(model);
-            PokazywanieStudenta(model);
+            PokazywanieKlienta(model);
             ClientEdit_Name_Text.setText("");
             ClientEdit_SurName_Text.setText("");
             ClientEdit_Pesel_Text.setText("");
             ClientEdit_Login_Text.setText("");
             ClientEdit_Password_Text.setText("");
             ClientEdit_Password2_Text.setText("");
-            StudentEdit_UpdateStudent_Button.setVisible(false);
+            ClientEdit_UpdateClient_Button.setVisible(false);
             ClientEdit_ClientId_Text.setText("");
             
         } catch (Exception ex) {
@@ -445,7 +443,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
     
         
         
-    }//GEN-LAST:event_StudentEdit_UpdateStudent_ButtonActionPerformed
+    }//GEN-LAST:event_ClientEdit_UpdateClient_ButtonActionPerformed
     /**
      * Metoda sluząca wyjściu z ramki
      */
@@ -469,7 +467,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         DefaultTableModel model=new DefaultTableModel(null,n);
         ClientEdit_ClientData_Table.setModel(model);
         try {
-            PokazywanieStudenta(model);
+            PokazywanieKlienta(model);
         } catch (Exception ex) {
             Logger.getLogger(CF_ClientEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -526,10 +524,10 @@ public class CF_ClientEdit extends javax.swing.JFrame {
     private javax.swing.JTextPane ClientEdit_Password_Text;
     private javax.swing.JTextPane ClientEdit_Pesel_Text;
     private javax.swing.JTextPane ClientEdit_SurName_Text;
+    private javax.swing.JButton ClientEdit_UpdateClient_Button;
     private javax.swing.JButton ClientPoints_ShowData_Button;
     private javax.swing.JButton StudentEdit_Close_Button;
     private javax.swing.JButton StudentEdit_NoChanges_Button;
-    private javax.swing.JButton StudentEdit_UpdateStudent_Button;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
