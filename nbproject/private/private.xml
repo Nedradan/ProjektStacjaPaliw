@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/Logout.java</file>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/LoginForm.java</file>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/LoginSession.java</file>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/MySQLConnection.java</file>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/Dashboard.java</file>
-            <file>file:/D:/STUDIA/3%20ROK/semestr%206/LoginValidation/src/KOXSoftwarePB/Operations.java</file>
+            <file>file:/D:/STUDIA/3%20ROK/semestr%206/KOXSoftwarePB/src/KOXSoftwarePB/Operations.java</file>
+            <file>file:/D:/STUDIA/3%20ROK/semestr%206/KOXSoftwarePB/src/KOXSoftwarePB/CF_MainMenuAdmin.java</file>
+            <file>file:/D:/STUDIA/3%20ROK/semestr%206/KOXSoftwarePB/src/KOXSoftwarePB/LoginForm.java</file>
+            <file>file:/D:/STUDIA/3%20ROK/semestr%206/KOXSoftwarePB/src/KOXSoftwarePB/CF_ClientAddDelete.java</file>
+            <file>file:/D:/STUDIA/3%20ROK/semestr%206/KOXSoftwarePB/src/KOXSoftwarePB/LoginSession.java</file>
         </group>
     </open-files>
 </project-private>
