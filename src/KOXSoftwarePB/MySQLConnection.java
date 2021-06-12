@@ -13,13 +13,14 @@ import java.sql.DriverManager;
  * @author Majey
  */
 public class MySQLConnection {
-    public static Connection getConnection(String userName,String password) throws Exception{
+    public static Connection getConnection() throws Exception{
+        
         String hostName = "jdbc:mysql://fabryczna7.ddns.net:3307/";
         String dbName = "jasiek";
         String dbUrl = hostName+dbName;
         
-        String hostUsername = userName;
-        String hostPassword = password;
+        String hostUsername = LoginSession.login;
+        String hostPassword = LoginSession.password;
         
         Class.forName("com.mysql.jdbc.Driver");
         Connection myConn = (Connection)DriverManager.getConnection(dbUrl, hostUsername, hostPassword);

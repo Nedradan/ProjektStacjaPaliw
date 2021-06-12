@@ -152,8 +152,8 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="usernameTxt" max="32767" attributes="0"/>
-                                  <Component id="passwordTxt" max="32767" attributes="0"/>
                                   <Component id="usertypeCombo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="passwordTxt" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -171,10 +171,10 @@
                           <Component id="jLabel4" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="passwordTxt" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel9" max="32767" attributes="0"/>
                           <Component id="jLabel5" max="32767" attributes="0"/>
+                          <Component id="passwordTxt" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -183,7 +183,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -226,7 +226,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="usernameTxt">
             </Component>
-            <Component class="javax.swing.JTextField" name="passwordTxt">
+            <Component class="javax.swing.JPasswordField" name="passwordTxt">
             </Component>
             <Component class="javax.swing.JComboBox" name="usertypeCombo">
               <Properties>

@@ -10,8 +10,9 @@ package KOXSoftwarePB;
  * @author Majey
  */
 public class LoginSession {
-    public static int UID; // Global User ID
-    public static String Usertype; // Global Usertype
-    public static String login; // Global Nickname
-    public static boolean isLoggedIn = false; // Check is User is logged in.
+    public static int UID; 
+    public static String Usertype; 
+    public static String login="jasiek"; 
+    public static String password="i##4ug&o%U"; 
+    public static boolean isLoggedIn = false;
 }

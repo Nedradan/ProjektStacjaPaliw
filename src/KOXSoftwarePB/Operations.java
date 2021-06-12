@@ -18,22 +18,23 @@ import javax.swing.JOptionPane;
 public class Operations {
     public static boolean isLogin(String username, String password, String usertype, JFrame frame){
         try{
-            Connection myConn = MySQLConnection.getConnection(username,password);
+            Connection myConn = MySQLConnection.getConnection();
             String mySqlQuery = 
-                    "SELECT UID, Usertype, login FROM login WHERE login = '"+
+                    "SELECT LOG_UID, LOG_USERTYPE, LOG_LOGIN, LOG_PASSWORD FROM login WHERE LOG_LOGIN = '"+
                     username+
-                    "' AND passsword = '"+
+                    "' AND LOG_PASSWORD = '"+
                     password+
-                    "' AND Usertype = '"+
+                    "' AND LOG_USERTYPE = '"+
                     usertype+
                     "'";
             PreparedStatement preparedStatement = myConn.prepareStatement(mySqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
             
             while(resultSet.next()){
-                LoginSession.UID = resultSet.getInt("UID");
-                LoginSession.Usertype = resultSet.getString("Usertype");
-                LoginSession.login = resultSet.getString("login");
+                LoginSession.UID = resultSet.getInt("LOG_UID");
+                LoginSession.Usertype = resultSet.getString("LOG_USERTYPE");
+                LoginSession.login = resultSet.getString("LOG_LOGIN");
+                LoginSession.password = resultSet.getString("LOG_PASSWORD");
                 
                 return true;
             }

@@ -50,7 +50,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="MMA_ClientCheck" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="MMA_ClientAdd" alignment="0" pref="298" max="32767" attributes="0"/>
+                                      <Component id="MMA_ClientAddDelete" alignment="0" pref="298" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -84,7 +84,7 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="MMA_ClientAdd" pref="35" max="32767" attributes="0"/>
+                  <Component id="MMA_ClientAddDelete" pref="35" max="32767" attributes="0"/>
                   <Component id="MMA_CarWash" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_ClientEditActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="MMA_ClientAdd">
+    <Component class="javax.swing.JButton" name="MMA_ClientAddDelete">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="66" type="rgb"/>
@@ -168,7 +168,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_ClientAddActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_ClientAddDeleteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="MMA_CCTV">

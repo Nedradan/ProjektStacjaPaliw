@@ -37,12 +37,12 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * @see java.swing
 */
  
-public class MainMenuAdmin extends javax.swing.JFrame {
+public class CF_MainMenuAdmin extends javax.swing.JFrame {
 
     /**
      * Tworzy nową ramke menu głownego
      */
-    public MainMenuAdmin() {
+    public CF_MainMenuAdmin() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -73,7 +73,7 @@ public class MainMenuAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         MMA_ClientEdit = new javax.swing.JButton();
-        MMA_ClientAdd = new javax.swing.JButton();
+        MMA_ClientAddDelete = new javax.swing.JButton();
         MMA_CCTV = new javax.swing.JButton();
         MMA_FuelDelivery = new javax.swing.JButton();
         Main_CloseProgram_Button = new javax.swing.JButton();
@@ -105,13 +105,13 @@ public class MainMenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        MMA_ClientAdd.setBackground(new java.awt.Color(102, 255, 102));
-        MMA_ClientAdd.setText("Dodanie/usuwanie klienta");
-        MMA_ClientAdd.setMaximumSize(new java.awt.Dimension(149, 23));
-        MMA_ClientAdd.setMinimumSize(new java.awt.Dimension(149, 23));
-        MMA_ClientAdd.addActionListener(new java.awt.event.ActionListener() {
+        MMA_ClientAddDelete.setBackground(new java.awt.Color(102, 255, 102));
+        MMA_ClientAddDelete.setText("Dodanie/usuwanie klienta");
+        MMA_ClientAddDelete.setMaximumSize(new java.awt.Dimension(149, 23));
+        MMA_ClientAddDelete.setMinimumSize(new java.awt.Dimension(149, 23));
+        MMA_ClientAddDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MMA_ClientAddActionPerformed(evt);
+                MMA_ClientAddDeleteActionPerformed(evt);
             }
         });
 
@@ -227,7 +227,7 @@ public class MainMenuAdmin extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(MMA_ClientCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(MMA_ClientAdd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
+                                        .addComponent(MMA_ClientAddDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(MMA_ClientBest, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +250,7 @@ public class MainMenuAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MMA_ClientAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(MMA_ClientAddDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(MMA_CarWash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -279,14 +279,16 @@ public class MainMenuAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MMA_ClientEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientEditActionPerformed
-        //CFrameStudents CFrameStudentsObject=new CFrameStudents();
-        //CFrameStudentsObject.setVisible(true);
-        //this.dispose();
+        CF_ClientEdit CF_ClientEditObject=new CF_ClientEdit();
+        CF_ClientEditObject.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MMA_ClientEditActionPerformed
 
-    private void MMA_ClientAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientAddActionPerformed
-       
-    }//GEN-LAST:event_MMA_ClientAddActionPerformed
+    private void MMA_ClientAddDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientAddDeleteActionPerformed
+       CF_ClientAddDelete CF_ClientAddDeleteObject= new CF_ClientAddDelete();
+       CF_ClientAddDeleteObject.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_MMA_ClientAddDeleteActionPerformed
 
     private void MMA_CCTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_CCTVActionPerformed
        
@@ -317,7 +319,9 @@ public class MainMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_MMA_CarWashActionPerformed
 
     private void MMA_ClientCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientCheckActionPerformed
-        
+        CF_ClientFind CF_ClientFindObject= new CF_ClientFind();
+        CF_ClientFindObject.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MMA_ClientCheckActionPerformed
 
     private void MMA_ClientPointsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientPointsAddActionPerformed
@@ -358,14 +362,16 @@ public class MainMenuAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -375,7 +381,7 @@ public class MainMenuAdmin extends javax.swing.JFrame {
              * @param CFrameMainMenuObject Obiekt klasy CFrameMainMenu
              */        
             public void run() {
-                MainMenuAdmin CFrameMainMenuObject= new MainMenuAdmin();
+                CF_MainMenuAdmin CFrameMainMenuObject= new CF_MainMenuAdmin();
                 CFrameMainMenuObject.setVisible(true);
                 
             }
@@ -388,7 +394,7 @@ public class MainMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton MMA_CCTV;
     private javax.swing.JButton MMA_CarWash;
     private javax.swing.JButton MMA_CarWashReservations;
-    private javax.swing.JButton MMA_ClientAdd;
+    private javax.swing.JButton MMA_ClientAddDelete;
     private javax.swing.JButton MMA_ClientBest;
     private javax.swing.JButton MMA_ClientCheck;
     private javax.swing.JButton MMA_ClientEdit;
