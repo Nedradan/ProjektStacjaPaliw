@@ -49,7 +49,7 @@ public class CF_ClientFind extends javax.swing.JFrame {
      * @param rs Słuzy do przechowywania rezultatów kwerendy
      * @throws e Sprawdzenie czy połączenie z bazą przebiegło pomyslnie
      */
-    public void SzukanieStudenta(DefaultTableModel model) throws Exception{
+    public void SzukanieKlienta(DefaultTableModel model) throws Exception{
         Connection myConn = MySQLConnection.getConnection();
         String Input=(String) ClientFind_Options_ComboBox.getSelectedItem();
         String what = "";
@@ -305,7 +305,7 @@ public class CF_ClientFind extends javax.swing.JFrame {
         DefaultTableModel model=new DefaultTableModel(null,n);
         ClientFind_ClientData_Table.setModel(model);
         try {
-            SzukanieStudenta(model);
+            SzukanieKlienta(model);
         } catch (Exception ex) {
             Logger.getLogger(CF_ClientFind.class.getName()).log(Level.SEVERE, null, ex);
         }

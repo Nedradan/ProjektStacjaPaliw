@@ -132,7 +132,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         StudentEdit_UpdateStudent_Button = new javax.swing.JButton();
         StudentEdit_NoChanges_Button = new javax.swing.JButton();
         StudentEdit_Close_Button = new javax.swing.JButton();
-        ClientEdit_ShowData_Button = new javax.swing.JButton();
+        ClientPoints_ShowData_Button = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         ClientEdit_Pesel_Text = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
@@ -230,11 +230,11 @@ public class CF_ClientEdit extends javax.swing.JFrame {
             }
         });
 
-        ClientEdit_ShowData_Button.setBackground(new java.awt.Color(255, 255, 102));
-        ClientEdit_ShowData_Button.setText("Pokaż dane");
-        ClientEdit_ShowData_Button.addActionListener(new java.awt.event.ActionListener() {
+        ClientPoints_ShowData_Button.setBackground(new java.awt.Color(255, 255, 102));
+        ClientPoints_ShowData_Button.setText("Pokaż dane");
+        ClientPoints_ShowData_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClientEdit_ShowData_ButtonActionPerformed(evt);
+                ClientPoints_ShowData_ButtonActionPerformed(evt);
             }
         });
 
@@ -312,7 +312,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ClientEdit_ShowData_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ClientPoints_ShowData_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
@@ -330,7 +330,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane1)
                                             .addComponent(ClientEdit_Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(ClientEdit_ShowData_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(ClientPoints_ShowData_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(ClientEdit_Header_Label)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -411,13 +411,14 @@ public class CF_ClientEdit extends javax.swing.JFrame {
             }
             sqlQuery="UPDATE klienci SET KLI_NAME ='"+name+"',KLI_SURNAME='"+surname+"',KLI_PESEL='"+pesel+"' WHERE KLI_CARD_NUMBER="+fromInt+";";
             String sqlQuery2="UPDATE login SET LOG_LOGIN='"+login+"',LOG_PASSWORD='"+password+"' WHERE LOG_UID="+loginUID+";";
-            stmt = myConn.createStatement();
-            String sqlQuery3="SELECT * FROM OSOBY WHERE OSO_ID="+fromInt+" and OSO_STATUS='Student'";
+            stmt = myConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sqlQuery3="SELECT * FROM klienci WHERE KLI_CARD_NUMBER="+fromInt+"";
             rs = stmt.executeQuery(sqlQuery3);
             if (rs.first()==false){
                 showMessageDialog(null,"Brak KLIENTA o danym id");
                 return;
             }
+            stmt = myConn.createStatement();
             stmt.executeUpdate(sqlQuery);
             stmt.executeUpdate(sqlQuery2);
             showMessageDialog(null,"Pomyślnie zaktualizowano");
@@ -463,7 +464,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
      * @param n Wzór tablei
      * @param cnx Obiekt do polaczenia z baza danych
      */
-    private void ClientEdit_ShowData_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientEdit_ShowData_ButtonActionPerformed
+    private void ClientPoints_ShowData_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientPoints_ShowData_ButtonActionPerformed
         String n[]={"Numer karty","Imie","Nazwisko","Pesel","Login","Hasło"};
         DefaultTableModel model=new DefaultTableModel(null,n);
         ClientEdit_ClientData_Table.setModel(model);
@@ -472,7 +473,7 @@ public class CF_ClientEdit extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(CF_ClientEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_ClientEdit_ShowData_ButtonActionPerformed
+    }//GEN-LAST:event_ClientPoints_ShowData_ButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -524,8 +525,8 @@ public class CF_ClientEdit extends javax.swing.JFrame {
     private javax.swing.JTextPane ClientEdit_Password2_Text;
     private javax.swing.JTextPane ClientEdit_Password_Text;
     private javax.swing.JTextPane ClientEdit_Pesel_Text;
-    private javax.swing.JButton ClientEdit_ShowData_Button;
     private javax.swing.JTextPane ClientEdit_SurName_Text;
+    private javax.swing.JButton ClientPoints_ShowData_Button;
     private javax.swing.JButton StudentEdit_Close_Button;
     private javax.swing.JButton StudentEdit_NoChanges_Button;
     private javax.swing.JButton StudentEdit_UpdateStudent_Button;

@@ -82,7 +82,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ClientEdit_ShowData_Button" min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="ClientPoints_ShowData_Button" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -104,7 +104,7 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                                           <Component id="ClientEdit_Label2" max="32767" attributes="0"/>
-                                          <Component id="ClientEdit_ShowData_Button" max="32767" attributes="0"/>
+                                          <Component id="ClientPoints_ShowData_Button" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="ClientEdit_Header_Label" min="-2" max="-2" attributes="0"/>
@@ -377,7 +377,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StudentEdit_Close_ButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ClientEdit_ShowData_Button">
+    <Component class="javax.swing.JButton" name="ClientPoints_ShowData_Button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="ff" type="rgb"/>
@@ -385,7 +385,7 @@
         <Property name="text" type="java.lang.String" value="Poka&#x17c; dane"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClientEdit_ShowData_ButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClientPoints_ShowData_ButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane6">
