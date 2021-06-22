@@ -11,6 +11,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -75,11 +78,9 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
         MMA_ClientEdit = new javax.swing.JButton();
         MMA_ClientAddDelete = new javax.swing.JButton();
         MMA_CCTV = new javax.swing.JButton();
-        MMA_FuelDelivery = new javax.swing.JButton();
         Main_CloseProgram_Button = new javax.swing.JButton();
         MMA_CarWashReservations = new javax.swing.JButton();
         MMA_CarWash = new javax.swing.JButton();
-        MMA_ClientBest = new javax.swing.JButton();
         MMA_ClientCheck = new javax.swing.JButton();
         MMA_ClientPointsAdd = new javax.swing.JButton();
         MMA_PriceList = new javax.swing.JButton();
@@ -125,16 +126,6 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        MMA_FuelDelivery.setBackground(new java.awt.Color(0, 255, 255));
-        MMA_FuelDelivery.setText("Organizacja dostaw paliwa");
-        MMA_FuelDelivery.setMaximumSize(new java.awt.Dimension(149, 23));
-        MMA_FuelDelivery.setMinimumSize(new java.awt.Dimension(149, 23));
-        MMA_FuelDelivery.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MMA_FuelDeliveryActionPerformed(evt);
-            }
-        });
-
         Main_CloseProgram_Button.setBackground(new java.awt.Color(255, 0, 0));
         Main_CloseProgram_Button.setText("Wyłącz program");
         Main_CloseProgram_Button.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +135,7 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
         });
 
         MMA_CarWashReservations.setBackground(new java.awt.Color(0, 255, 255));
-        MMA_CarWashReservations.setText("Lista rezerwacji");
+        MMA_CarWashReservations.setText("Myjnia Rezerwacje");
         MMA_CarWashReservations.setMaximumSize(new java.awt.Dimension(149, 23));
         MMA_CarWashReservations.setMinimumSize(new java.awt.Dimension(149, 23));
         MMA_CarWashReservations.addActionListener(new java.awt.event.ActionListener() {
@@ -154,22 +145,12 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
         });
 
         MMA_CarWash.setBackground(new java.awt.Color(0, 255, 255));
-        MMA_CarWash.setText("Sprawdź terminy myjni");
+        MMA_CarWash.setText("Historia transakcji");
         MMA_CarWash.setMaximumSize(new java.awt.Dimension(149, 23));
         MMA_CarWash.setMinimumSize(new java.awt.Dimension(149, 23));
         MMA_CarWash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MMA_CarWashActionPerformed(evt);
-            }
-        });
-
-        MMA_ClientBest.setBackground(new java.awt.Color(102, 255, 102));
-        MMA_ClientBest.setText("Najlepsi klienci");
-        MMA_ClientBest.setMaximumSize(new java.awt.Dimension(149, 23));
-        MMA_ClientBest.setMinimumSize(new java.awt.Dimension(149, 23));
-        MMA_ClientBest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MMA_ClientBestActionPerformed(evt);
             }
         });
 
@@ -182,7 +163,7 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
         });
 
         MMA_ClientPointsAdd.setBackground(new java.awt.Color(102, 255, 102));
-        MMA_ClientPointsAdd.setText("Dodaj punkty klientowi");
+        MMA_ClientPointsAdd.setText("Dodaj rachunek");
         MMA_ClientPointsAdd.setMaximumSize(new java.awt.Dimension(149, 23));
         MMA_ClientPointsAdd.setMinimumSize(new java.awt.Dimension(149, 23));
         MMA_ClientPointsAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -217,28 +198,17 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
                                 .addComponent(Main_CloseProgram_Button)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(MMA_ClientEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(MMA_ClientPointsAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(27, 27, 27))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(MMA_ClientCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(MMA_ClientAddDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(MMA_ClientBest, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MMA_PriceList, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(MMA_FuelDelivery, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                .addComponent(MMA_CCTV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MMA_CarWash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(MMA_CarWashReservations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(MMA_ClientAddDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                            .addComponent(MMA_ClientCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MMA_ClientPointsAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MMA_ClientEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MMA_CCTV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MMA_CarWash, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(MMA_CarWashReservations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MMA_PriceList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
@@ -252,25 +222,23 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(MMA_ClientAddDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(MMA_CarWash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MMA_ClientCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(MMA_CarWashReservations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MMA_ClientEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MMA_FuelDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MMA_ClientPointsAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MMA_CCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MMA_ClientBest, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MMA_PriceList, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addComponent(MMA_CarWashReservations, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MMA_ClientCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(MMA_CCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(MMA_ClientEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(MMA_ClientPointsAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(MMA_PriceList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
                 .addComponent(Main_CloseProgram_Button)
                 .addContainerGap())
         );
@@ -291,21 +259,29 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_MMA_ClientAddDeleteActionPerformed
 
     private void MMA_CCTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_CCTVActionPerformed
-       
+        
+        CF_MonitorSystem CF_MonitorSystemObject;
+        try {
+            CF_MonitorSystemObject = new CF_MonitorSystem();
+            CF_MonitorSystemObject.setVisible(true);
+            this.dispose();
+        } catch (ParseException ex) {
+            Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_MMA_CCTVActionPerformed
 
-    private void MMA_FuelDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_FuelDeliveryActionPerformed
-       
-    }//GEN-LAST:event_MMA_FuelDeliveryActionPerformed
-
     private void MMA_CarWashReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_CarWashReservationsActionPerformed
         
-    }//GEN-LAST:event_MMA_CarWashReservationsActionPerformed
-
-    private void MMA_ClientBestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_ClientBestActionPerformed
+        try {
+            CF_ReservationsList CF_ReservationsListObject=new CF_ReservationsList();
+            CF_ReservationsListObject.setVisible(true);
+            this.dispose();
+        } catch (ParseException ex) {
+            Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-    }//GEN-LAST:event_MMA_ClientBestActionPerformed
+    }//GEN-LAST:event_MMA_CarWashReservationsActionPerformed
     /**
      * Metoda sluząca zakończeniu działania aplikacji
      */
@@ -314,7 +290,15 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_Main_CloseProgram_ButtonActionPerformed
 
     private void MMA_CarWashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_CarWashActionPerformed
-
+        
+        CF_TransactionsList CF_TransactionsListObject;
+        try {
+            CF_TransactionsListObject = new CF_TransactionsList();
+            CF_TransactionsListObject.setVisible(true);
+            this.dispose();
+        } catch (ParseException ex) {
+            Logger.getLogger(CF_MainMenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_MMA_CarWashActionPerformed
 
@@ -332,6 +316,9 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
 
     private void MMA_PriceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMA_PriceListActionPerformed
         // TODO add your handling code here:
+        CF_PriceList CF_PriceListObject=new CF_PriceList();
+        CF_PriceListObject.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MMA_PriceListActionPerformed
     
    /*  static void nawiazywaniePolaczenia() {
@@ -397,11 +384,9 @@ public class CF_MainMenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton MMA_CarWash;
     private javax.swing.JButton MMA_CarWashReservations;
     private javax.swing.JButton MMA_ClientAddDelete;
-    private javax.swing.JButton MMA_ClientBest;
     private javax.swing.JButton MMA_ClientCheck;
     private javax.swing.JButton MMA_ClientEdit;
     private javax.swing.JButton MMA_ClientPointsAdd;
-    private javax.swing.JButton MMA_FuelDelivery;
     private javax.swing.JButton MMA_PriceList;
     private javax.swing.JButton Main_CloseProgram_Button;
     private javax.swing.JLabel jLabel1;

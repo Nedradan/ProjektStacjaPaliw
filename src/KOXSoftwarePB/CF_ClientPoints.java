@@ -10,6 +10,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -107,6 +111,7 @@ public class CF_ClientPoints extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         ClientFind_Header = new javax.swing.JLabel();
         ClientPoints_Header_Label = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -120,12 +125,20 @@ public class CF_ClientPoints extends javax.swing.JFrame {
         ClientPoints_ShowData_Button1 = new javax.swing.JButton();
         ClientPoints_Header_Label1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        ClientPoints_PBON_Text = new javax.swing.JTextPane();
+        ClientPoints_E98_Text = new javax.swing.JTextPane();
         ClientPoints_Header_Label3 = new javax.swing.JLabel();
         ClientPoints_Options_ComboBox1 = new javax.swing.JComboBox();
         ClientPoints_Header_Label2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ClientPoints_LPG_Text = new javax.swing.JTextPane();
+        ClientPoints_Header_Label4 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ClientPoints_E95_Text1 = new javax.swing.JTextPane();
+        ClientPoints_Header_Label5 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        ClientPoints_ON_Text2 = new javax.swing.JTextPane();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,7 +215,7 @@ public class CF_ClientPoints extends javax.swing.JFrame {
         });
 
         ClientPoints_ShowData_Button1.setBackground(new java.awt.Color(255, 255, 102));
-        ClientPoints_ShowData_Button1.setText("Dodaj punkty");
+        ClientPoints_ShowData_Button1.setText("Stwórz rachunek");
         ClientPoints_ShowData_Button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClientPoints_ShowData_Button1ActionPerformed(evt);
@@ -212,9 +225,9 @@ public class CF_ClientPoints extends javax.swing.JFrame {
         ClientPoints_Header_Label1.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         ClientPoints_Header_Label1.setForeground(new java.awt.Color(0, 204, 204));
         ClientPoints_Header_Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ClientPoints_Header_Label1.setText("Ilość zakupionego PB/ON");
+        ClientPoints_Header_Label1.setText("Ilość zakupionego E98");
 
-        jScrollPane3.setViewportView(ClientPoints_PBON_Text);
+        jScrollPane3.setViewportView(ClientPoints_E98_Text);
 
         ClientPoints_Header_Label3.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
         ClientPoints_Header_Label3.setForeground(new java.awt.Color(0, 204, 204));
@@ -235,12 +248,30 @@ public class CF_ClientPoints extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(ClientPoints_LPG_Text);
 
+        ClientPoints_Header_Label4.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        ClientPoints_Header_Label4.setForeground(new java.awt.Color(0, 204, 204));
+        ClientPoints_Header_Label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ClientPoints_Header_Label4.setText("Ilość zakupionego E95");
+
+        jScrollPane5.setViewportView(ClientPoints_E95_Text1);
+
+        ClientPoints_Header_Label5.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        ClientPoints_Header_Label5.setForeground(new java.awt.Color(0, 204, 204));
+        ClientPoints_Header_Label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ClientPoints_Header_Label5.setText("Ilość zakupionego ON");
+
+        jScrollPane6.setViewportView(ClientPoints_ON_Text2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ClientPoints_NoChanges_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ClientPoints_Close_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ClientFind_Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -256,26 +287,29 @@ public class CF_ClientPoints extends javax.swing.JFrame {
                                 .addComponent(ClientPoints_ShowData_Button))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addComponent(ClientPoints_Header_Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jScrollPane4))
-                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ClientPoints_Header_Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ClientPoints_Header_Label3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ClientPoints_Header_Label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ClientPoints_Header_Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(19, 19, 19)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ClientPoints_ShowData_Button1)
-                                        .addComponent(ClientPoints_Options_ComboBox1, 0, 98, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane3)))))
-                        .addGap(0, 112, Short.MAX_VALUE)))
+                                        .addComponent(jScrollPane5)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ClientPoints_Header_Label5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ClientPoints_Header_Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane6)
+                                        .addComponent(jScrollPane4))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ClientPoints_Header_Label3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ClientPoints_ShowData_Button1)
+                                    .addComponent(ClientPoints_Options_ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ClientPoints_Close_Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ClientPoints_NoChanges_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,28 +326,34 @@ public class CF_ClientPoints extends javax.swing.JFrame {
                 .addComponent(ClientPoints_Header2_Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ClientPoints_Header_Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ClientPoints_Header_Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(ClientPoints_NoChanges_Button, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ClientPoints_Close_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ClientPoints_Header_Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ClientPoints_Header_Label2)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ClientPoints_Header_Label3)
-                            .addComponent(ClientPoints_Options_ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(ClientPoints_ShowData_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(7, 7, 7)
+                        .addComponent(ClientPoints_Header_Label2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ClientPoints_Header_Label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ClientPoints_Header_Label3)
+                    .addComponent(ClientPoints_Options_ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ClientPoints_ShowData_Button1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(ClientPoints_NoChanges_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ClientPoints_Close_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -350,24 +390,58 @@ public class CF_ClientPoints extends javax.swing.JFrame {
 
     private void ClientPoints_ShowData_Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientPoints_ShowData_Button1ActionPerformed
         int fromInt= Integer.parseInt(ClientPoints_Value_Text.getText());
-        int FuelBought=0;
-        int LPGBought=0;
-        if ("".equals(ClientPoints_PBON_Text.getText())==false)
+        double E95Bought=0;
+        double E98Bought=0;
+        double ONBought=0;
+        double LPGBought=0;
+        double prices[] ;
+        prices = new double[6];
+        int bill=0;
+        LocalDate today = LocalDate.now( ZoneId.of( "Europe/Warsaw" ) ) ;
+        String date = today.toString(); 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime time = LocalTime.now();
+        int i=0;
+        if ("".equals(ClientPoints_E98_Text.getText())==false)
         {
         try {
                 
-                FuelBought= Integer.parseInt(ClientPoints_PBON_Text.getText());
+                E98Bought= Double.parseDouble(ClientPoints_E98_Text.getText());
             }
         catch(NumberFormatException e) {
-			showMessageDialog(null,"PB/ON - To nie jest liczba!");                        
-                        ClientPoints_PBON_Text.setText("");
+			showMessageDialog(null,"E98 - To nie jest liczba!");                        
+                        ClientPoints_E98_Text.setText("");
+                        return;
+		}
+        }
+        if ("".equals(ClientPoints_E95_Text1.getText())==false)
+        {
+        try {
+                
+                E95Bought= Double.parseDouble(ClientPoints_E95_Text1.getText());
+            }
+        catch(NumberFormatException e) {
+			showMessageDialog(null,"E95 - To nie jest liczba!");                        
+                        ClientPoints_E95_Text1.setText("");
+                        return;
+		}
+        }
+        if ("".equals(ClientPoints_ON_Text2.getText())==false)
+        {
+        try {
+                
+                ONBought= Double.parseDouble(ClientPoints_ON_Text2.getText());
+            }
+        catch(NumberFormatException e) {
+			showMessageDialog(null,"ON - To nie jest liczba!");                        
+                        ClientPoints_ON_Text2.setText("");
                         return;
 		}
         }
         if ("".equals(ClientPoints_LPG_Text.getText())==false)
         {
         try {
-                LPGBought= Integer.parseInt(ClientPoints_LPG_Text.getText());
+                LPGBought= Double.parseDouble(ClientPoints_LPG_Text.getText());
             }
         catch(NumberFormatException e) {
 			showMessageDialog(null,"LPG - To nie jest liczba!");                        
@@ -378,23 +452,12 @@ public class CF_ClientPoints extends javax.swing.JFrame {
         int Bonus=0;
         int currentPoints=0;
         String Input=(String) ClientPoints_Options_ComboBox1.getSelectedItem();
-        switch(Input){
-            case "Brak":
-               Bonus+=0;
-               break;
-            case "Mycie":
-               Bonus+=5;
-               break;
-            case "Mycie z woskowaniem":
-               Bonus+=10;
-               break;
-        }
+        
         
         Connection myConn;
         try {
             myConn = MySQLConnection.getConnection();
             Statement stmt = myConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            
             String sqlQuery3="SELECT * FROM klienci WHERE KLI_CARD_NUMBER="+fromInt+"";
             ResultSet rs = stmt.executeQuery(sqlQuery3);
             if (rs.first()==false){
@@ -405,18 +468,51 @@ public class CF_ClientPoints extends javax.swing.JFrame {
             while (rs.next()) {
                 currentPoints=rs.getInt("KLI_POINTS");
             }
-            int pointsToAdd=currentPoints+FuelBought*2+LPGBought*1+Bonus;
+            sqlQuery3="SELECT CEN_PRICE FROM cennik";
+            rs = stmt.executeQuery(sqlQuery3);
+            while (rs.next()) {
+                prices[i]=rs.getDouble("CEN_PRICE");
+                i++;
+            }
+            switch(Input){
+            case "Brak":
+               Bonus+=0;
+               
+               break;
+            case "Mycie":
+               Bonus+=5;
+               bill+=prices[4];
+               break;
+            case "Mycie z woskowaniem":
+               Bonus+=10;
+               bill+=prices[5];
+               break;
+            }
+            
+            int intE95Bought=(int)E95Bought;
+            int intE98Bought=(int)E98Bought;
+            int intONBought=(int)ONBought;
+            int intLPGBought=(int)LPGBought;
+            bill+=E95Bought*prices[0]+E98Bought*prices[1]+ONBought*prices[3]+LPGBought*prices[2];
+            int pointsToAdd=currentPoints+intE95Bought*2+intE98Bought*2+intONBought*2+intLPGBought*1+Bonus;
             String sqlQuery="UPDATE klienci SET KLI_POINTS ="+pointsToAdd+" WHERE KLI_CARD_NUMBER="+fromInt+";";
             stmt = myConn.createStatement();
+            int insertCount = stmt.executeUpdate("INSERT INTO "
+                    + "transakcje (TRA_DATE,TRA_TIME,TRA_CLIENT_ID,TRA_BILL) "
+                    + "VALUES('"+date+"', '"+time+"','"+fromInt+"',"+bill+");");
             stmt.executeUpdate(sqlQuery);
+            showMessageDialog(null,"Pomyślnie utworzono rachunek");
             showMessageDialog(null,"Pomyślnie dodano punkty");
+            
             String n[]={"Numer karty","Imie","Nazwisko","Pesel","Login","Hasło"};
             DefaultTableModel model=new DefaultTableModel(null,n);
             ClientPoints_ShowData_Button1.setVisible(false);
             PokazywanieKlienta(model);
             ClientPoints_Value_Text.setText("");
-            ClientPoints_PBON_Text.setText("");
+            ClientPoints_E98_Text.setText("");
             ClientPoints_LPG_Text.setText("");
+            ClientPoints_E95_Text1.setText("");
+            ClientPoints_ON_Text2.setText("");
             
         } catch (Exception ex) {
             Logger.getLogger(CF_ClientEdit.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,6 +522,7 @@ public class CF_ClientPoints extends javax.swing.JFrame {
 
     private void ClientPoints_Options_ComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientPoints_Options_ComboBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_ClientPoints_Options_ComboBox1ActionPerformed
 
     /**
@@ -482,15 +579,19 @@ public class CF_ClientPoints extends javax.swing.JFrame {
     private javax.swing.JLabel ClientFind_Header;
     public javax.swing.JTable ClientPoints_ClientData_Table;
     private javax.swing.JButton ClientPoints_Close_Button;
+    private javax.swing.JTextPane ClientPoints_E95_Text1;
+    private javax.swing.JTextPane ClientPoints_E98_Text;
     private javax.swing.JLabel ClientPoints_Header2_Label;
     private javax.swing.JLabel ClientPoints_Header_Label;
     private javax.swing.JLabel ClientPoints_Header_Label1;
     private javax.swing.JLabel ClientPoints_Header_Label2;
     private javax.swing.JLabel ClientPoints_Header_Label3;
+    private javax.swing.JLabel ClientPoints_Header_Label4;
+    private javax.swing.JLabel ClientPoints_Header_Label5;
     private javax.swing.JTextPane ClientPoints_LPG_Text;
     private javax.swing.JButton ClientPoints_NoChanges_Button;
+    private javax.swing.JTextPane ClientPoints_ON_Text2;
     private javax.swing.JComboBox ClientPoints_Options_ComboBox1;
-    private javax.swing.JTextPane ClientPoints_PBON_Text;
     private javax.swing.JButton ClientPoints_ShowData_Button;
     private javax.swing.JButton ClientPoints_ShowData_Button1;
     private javax.swing.JTextPane ClientPoints_Value_Text;
@@ -498,5 +599,8 @@ public class CF_ClientPoints extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

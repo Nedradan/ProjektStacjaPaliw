@@ -68,7 +68,8 @@ public class CF_ClientAddDelete extends javax.swing.JFrame {
             
             int loginID=0;
             int cardNumber=0;
-            int insertLogin=statement.executeUpdate("INSERT INTO login (LOG_USERTYPE,LOG_LOGIN,LOG_PASSWORD) VALUES('user','"+login+"','"+Pesel+"');");
+            int insertLogin=statement.executeUpdate("INSERT INTO login (LOG_USERTYPE,LOG_LOGIN,LOG_PASSWORD) "
+                    + "VALUES('user','"+login+"','"+Pesel+"');");
             String mySqlQuery = 
                     "SELECT LOG_UID FROM login WHERE LOG_PASSWORD = '"+
                     Pesel+
@@ -78,7 +79,9 @@ public class CF_ClientAddDelete extends javax.swing.JFrame {
             while(resultSet.next()){
                 loginID= resultSet.getInt("LOG_UID");
             }
-            int insertCount = statement.executeUpdate("INSERT INTO klienci (KLI_NAME,KLI_SURNAME,KLI_PESEL,KLI_POINTS,KLI_LOGIN_ID) VALUES('"+Name+"', '"+Surname+"','"+Pesel+"','"+BonusPoints+"','"+loginID+"');");
+            int insertCount = statement.executeUpdate("INSERT INTO "
+                    + "klienci (KLI_NAME,KLI_SURNAME,KLI_PESEL,KLI_POINTS,KLI_LOGIN_ID) "
+                    + "VALUES('"+Name+"', '"+Surname+"','"+Pesel+"','"+BonusPoints+"','"+loginID+"');");
             mySqlQuery = 
                     "SELECT KLI_CARD_NUMBER FROM klienci WHERE KLI_LOGIN_ID = '"+
                     loginID+
