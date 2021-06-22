@@ -38,38 +38,20 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="MMA_ClientEdit" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="MMA_ClientPointsAdd" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="MMA_ClientCheck" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="MMA_ClientAddDelete" alignment="0" pref="298" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="MMA_ClientBest" min="-2" pref="299" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="MMA_ClientAddDelete" alignment="0" pref="302" max="32767" attributes="0"/>
+                          <Component id="MMA_ClientCheck" max="32767" attributes="0"/>
+                          <Component id="MMA_ClientPointsAdd" max="32767" attributes="0"/>
+                          <Component id="MMA_ClientEdit" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="MMA_PriceList" pref="251" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="MMA_FuelDelivery" pref="251" max="32767" attributes="0"/>
-                              <Component id="MMA_CCTV" alignment="0" max="32767" attributes="0"/>
-                              <Component id="MMA_CarWash" max="32767" attributes="0"/>
-                              <Component id="MMA_CarWashReservations" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="MMA_CCTV" alignment="0" max="32767" attributes="0"/>
+                          <Component id="MMA_CarWash" pref="251" max="32767" attributes="0"/>
+                          <Component id="MMA_CarWashReservations" max="32767" attributes="0"/>
+                          <Component id="MMA_PriceList" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -87,30 +69,28 @@
                   <Component id="MMA_ClientAddDelete" pref="35" max="32767" attributes="0"/>
                   <Component id="MMA_CarWash" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="MMA_ClientCheck" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      <Component id="MMA_CarWashReservations" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                      <Component id="MMA_CarWashReservations" min="-2" pref="41" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="MMA_ClientCheck" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="MMA_CCTV" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="MMA_ClientEdit" max="32767" attributes="0"/>
+                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MMA_ClientEdit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="MMA_FuelDelivery" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="MMA_ClientPointsAdd" pref="42" max="32767" attributes="0"/>
+                  <Component id="MMA_PriceList" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MMA_ClientPointsAdd" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="MMA_CCTV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MMA_ClientBest" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="MMA_PriceList" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="Main_CloseProgram_Button" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -188,23 +168,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_CCTVActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="MMA_FuelDelivery">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="0" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Organizacja dostaw paliwa"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[149, 23]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[149, 23]"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_FuelDeliveryActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="Main_CloseProgram_Button">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -221,7 +184,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Lista rezerwacji"/>
+        <Property name="text" type="java.lang.String" value="Myjnia Rezerwacje"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[149, 23]"/>
         </Property>
@@ -238,7 +201,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Sprawd&#x17a; terminy myjni"/>
+        <Property name="text" type="java.lang.String" value="Historia transakcji"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[149, 23]"/>
         </Property>
@@ -248,23 +211,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_CarWashActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="MMA_ClientBest">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Najlepsi klienci"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[149, 23]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[149, 23]"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MMA_ClientBestActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="MMA_ClientCheck">
@@ -283,7 +229,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dodaj punkty klientowi"/>
+        <Property name="text" type="java.lang.String" value="Dodaj rachunek"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[149, 23]"/>
         </Property>
