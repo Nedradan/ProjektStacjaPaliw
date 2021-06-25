@@ -1,0 +1,429 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package KOXSoftwarePB;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.table.DefaultTableModel;
+
+
+
+/**
+ *
+ * Ramka słuząca do wyszukiwania studentów
+ */
+public class CF_TransactionsListUser extends javax.swing.JFrame {
+
+/**
+ *
+ * Konstruktor tworzacy nową ramke
+ */
+    public CF_TransactionsListUser() throws ParseException {
+        initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+        
+        
+        
+        
+    }
+    
+    public void SzukanieTransakcji(DefaultTableModel model) throws Exception{
+        Connection myConn = MySQLConnection.getConnection();
+        String Input=(String) TransactionListUser_Options_ComboBox.getSelectedItem();
+        int i=0;
+        String time="";
+        LocalDate date;
+        String sqlQuery="";
+        int clientID=LoginSession.UID;
+        String billTemp="";
+        int transactionID=0;
+        
+        LocalDate today = LocalDate.now( ZoneId.of( "Europe/Warsaw" ) ) ;
+        String output = today.toString(); 
+        switch (Input) {
+        case "Dziś":
+        sqlQuery="SELECT KLI_CARD_NUMBER,KLI_NAME,KLI_SURNAME,TRA_DATE,TRA_TIME,TRA_ID,TRA_BILL "
+                + "FROM transakcje "
+                + "INNER JOIN klienci ON transakcje.TRA_CLIENT_ID=klienci.KLI_CARD_NUMBER "
+                + "WHERE TRA_DATE LIKE '"+output+"' AND KLI_LOGIN_ID="+clientID+";";
+        break;
+        case "3 dni":
+        LocalDate days3=today.minusDays(3);
+        String output2 = days3.toString();
+        sqlQuery="SELECT KLI_CARD_NUMBER,KLI_NAME,KLI_SURNAME,TRA_DATE,TRA_TIME,TRA_ID,TRA_BILL "
+                + "FROM transakcje "
+                + "INNER JOIN klienci ON transakcje.TRA_CLIENT_ID=klienci.KLI_CARD_NUMBER "
+                + "WHERE TRA_DATE <= CAST('"+output+"' AS DATE) AND TRA_DATE >= CAST('"+output2+"' AS DATE) AND KLI_LOGIN_ID="+clientID+";";        
+        break;
+        case "7 dni":
+        LocalDate days7=today.minusDays(7);
+        String output3 = days7.toString();  
+        sqlQuery="SELECT KLI_CARD_NUMBER,KLI_NAME,KLI_SURNAME,TRA_DATE,TRA_TIME,TRA_ID,TRA_BILL "
+                + "FROM transakcje "
+                + "INNER JOIN klienci ON transakcje.TRA_CLIENT_ID=klienci.KLI_CARD_NUMBER "
+                + "WHERE TRA_DATE <= CAST('"+output+"' AS DATE) AND TRA_DATE >= CAST('"+output3+"' AS DATE) AND KLI_LOGIN_ID="+clientID+";";         
+        break;
+        case "14 dni":
+        LocalDate days14=today.minusDays(14);
+        String output4 = days14.toString();  
+        sqlQuery="SELECT KLI_CARD_NUMBER,KLI_NAME,KLI_SURNAME,TRA_DATE,TRA_TIME,TRA_ID,TRA_BILL "
+                + "FROM transakcje "
+                + "INNER JOIN klienci ON transakcje.TRA_CLIENT_ID=klienci.KLI_CARD_NUMBER "
+                + "WHERE TRA_DATE <= CAST('"+output+"' AS DATE) AND TRA_DATE >= CAST('"+output4+"' AS DATE) AND KLI_LOGIN_ID="+clientID+";";        
+        break;
+        }
+        
+        try (Statement stmt = myConn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+          ResultSet rs = stmt.executeQuery(sqlQuery)) {
+            if (rs.next()==false){
+                showMessageDialog(null,"Nie masz transakcji w podanym zakresie");
+                return;
+            }
+            rs.beforeFirst();
+        while (rs.next()) {
+          model.addRow(new Object[4]);
+          transactionID=rs.getInt("TRA_ID");
+          date=rs.getDate("TRA_DATE").toLocalDate();;
+          time=rs.getString("TRA_TIME");
+          String time2=time.split(":")[0];
+          String time3=time.split(":")[1];
+          time=time2+":"+time3;
+          billTemp=Double.toString(rs.getDouble("TRA_BILL"));
+          billTemp+=" zł";
+          TransactionListUser_ClientData_Table.setValueAt(transactionID, i, 0);
+          TransactionListUser_ClientData_Table.setValueAt(date, i, 1);
+          TransactionListUser_ClientData_Table.setValueAt(time, i, 2);
+          TransactionListUser_ClientData_Table.setValueAt(billTemp, i, 3);
+          i++;
+        }
+         } catch (SQLException e) {
+               showMessageDialog(null, "Problem z polaczeniem");
+    }
+    }
+
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        TransactionList_Header = new javax.swing.JLabel();
+        TransactionListUser_Header_Label = new javax.swing.JLabel();
+        TransactionListUser_Header2_Label = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TransactionListUser_ClientData_Table = new javax.swing.JTable();
+        TransactionListUser_NoChanges_Button = new javax.swing.JButton();
+        TransactionListUser_Close_Button = new javax.swing.JButton();
+        TransactionListUser_ShowData_Button = new javax.swing.JButton();
+        TransactionListUser_Options_ComboBox = new javax.swing.JComboBox();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        TransactionList_Header.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        TransactionList_Header.setForeground(new java.awt.Color(255, 153, 153));
+        TransactionList_Header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TransactionList_Header.setText("Stacja paliw");
+        TransactionList_Header.setToolTipText("");
+
+        TransactionListUser_Header_Label.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        TransactionListUser_Header_Label.setForeground(new java.awt.Color(0, 204, 204));
+        TransactionListUser_Header_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TransactionListUser_Header_Label.setText("Wybierz okres czasu:");
+
+        TransactionListUser_Header2_Label.setFont(new java.awt.Font("Monospaced", 3, 18)); // NOI18N
+        TransactionListUser_Header2_Label.setForeground(new java.awt.Color(0, 204, 204));
+        TransactionListUser_Header2_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TransactionListUser_Header2_Label.setText("Lista transakcji");
+
+        TransactionListUser_ClientData_Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nr Transakcji", "Data", "Godzina", "Wartośc rachunku"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(TransactionListUser_ClientData_Table);
+        if (TransactionListUser_ClientData_Table.getColumnModel().getColumnCount() > 0) {
+            TransactionListUser_ClientData_Table.getColumnModel().getColumn(0).setResizable(false);
+            TransactionListUser_ClientData_Table.getColumnModel().getColumn(1).setResizable(false);
+            TransactionListUser_ClientData_Table.getColumnModel().getColumn(2).setResizable(false);
+            TransactionListUser_ClientData_Table.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        TransactionListUser_NoChanges_Button.setBackground(new java.awt.Color(255, 0, 0));
+        TransactionListUser_NoChanges_Button.setText("Wróc do menu głownego");
+        TransactionListUser_NoChanges_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransactionListUser_NoChanges_ButtonActionPerformed(evt);
+            }
+        });
+
+        TransactionListUser_Close_Button.setBackground(new java.awt.Color(255, 0, 0));
+        TransactionListUser_Close_Button.setText("Wyłącz program");
+        TransactionListUser_Close_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransactionListUser_Close_ButtonActionPerformed(evt);
+            }
+        });
+
+        TransactionListUser_ShowData_Button.setBackground(new java.awt.Color(255, 255, 102));
+        TransactionListUser_ShowData_Button.setText("Pokaż dane");
+        TransactionListUser_ShowData_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransactionListUser_ShowData_ButtonActionPerformed(evt);
+            }
+        });
+
+        TransactionListUser_Options_ComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dziś", "3 dni", "7 dni", "14 dni" }));
+        TransactionListUser_Options_ComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransactionListUser_Options_ComboBoxActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TransactionList_Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TransactionListUser_Header2_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TransactionListUser_Close_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TransactionListUser_NoChanges_Button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(TransactionListUser_Header_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TransactionListUser_Options_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(TransactionListUser_ShowData_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(TransactionList_Header, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TransactionListUser_Header_Label)
+                            .addComponent(TransactionListUser_ShowData_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(TransactionListUser_Options_ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38)
+                .addComponent(TransactionListUser_Header2_Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(TransactionListUser_NoChanges_Button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TransactionListUser_Close_Button)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    /**
+     * Metoda sluząca wyjściu z ramki
+     */
+    private void TransactionListUser_NoChanges_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionListUser_NoChanges_ButtonActionPerformed
+        new  CF_MainMenuUser().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_TransactionListUser_NoChanges_ButtonActionPerformed
+    /**
+     * Metoda sluząca zakończeniu działania aplikacji
+     */
+    private void TransactionListUser_Close_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionListUser_Close_ButtonActionPerformed
+        Runtime.getRuntime().exit(0);
+    }//GEN-LAST:event_TransactionListUser_Close_ButtonActionPerformed
+     /**
+     * Metoda pośrednicząca w przeszukiwaniu studentów
+     * @param n Wzór tabeli
+     * @param model Tabela do wyświetlania wyników
+     * @param cnx Obiekt do połącznia z bazą
+     */
+    private void TransactionListUser_ShowData_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionListUser_ShowData_ButtonActionPerformed
+        String n[]={"Nr transakcji","Data","Godzina","Wartość"};
+        DefaultTableModel model=new DefaultTableModel(null,n);
+        TransactionListUser_ClientData_Table.setModel(model);
+        try {
+            SzukanieTransakcji(model);
+        } catch (Exception ex) {
+            Logger.getLogger(CF_TransactionsListUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TransactionListUser_ShowData_ButtonActionPerformed
+
+    private void TransactionListUser_Options_ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionListUser_Options_ComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransactionListUser_Options_ComboBoxActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CF_TransactionsListUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CF_TransactionsListUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CF_TransactionsListUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CF_TransactionsListUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+
+    }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable TransactionListUser_ClientData_Table;
+    private javax.swing.JButton TransactionListUser_Close_Button;
+    private javax.swing.JLabel TransactionListUser_Header2_Label;
+    private javax.swing.JLabel TransactionListUser_Header_Label;
+    private javax.swing.JButton TransactionListUser_NoChanges_Button;
+    private javax.swing.JComboBox TransactionListUser_Options_ComboBox;
+    private javax.swing.JButton TransactionListUser_ShowData_Button;
+    private javax.swing.JLabel TransactionList_Header;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JScrollPane jScrollPane2;
+    // End of variables declaration//GEN-END:variables
+}

@@ -14,5 +14,7 @@ public class LoginSession {
     public static String Usertype; 
     public static String login="jasiek"; 
     public static String password="i##4ug&o%U"; 
+    public static String loginSession; 
+    public static String passwordSession; 
     public static boolean isLoggedIn = false;
 }
