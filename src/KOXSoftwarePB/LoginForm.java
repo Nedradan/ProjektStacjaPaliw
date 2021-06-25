@@ -213,18 +213,19 @@ public class LoginForm extends javax.swing.JFrame {
             String passwordStr = passwordTxt.getText();
             String usertypeStr = usertypeCombo.getSelectedItem().toString();
         switch (usertypeStr) {
-        case "Użytkownik":
-            usertypeStr="User";
+        case "Klient":
+            usertypeStr="user";
         break;
         case "Pracownik":
             usertypeStr="Admin";
         break;
         }
-            JOptionPane.showMessageDialog(this, "Success!!!");
+            
             if(operations.isLogin(usernameStr, passwordStr, usertypeStr, this)){
                 switch (usertypeStr) {
-                    case "User":
-                        
+                    case "user":
+                        CF_MainMenuUser CF_MainMenuUserObject=new CF_MainMenuUser();
+                        CF_MainMenuUserObject.setVisible(true);
                     break;
                     case "Admin":
                         CF_MainMenuAdmin CF_MainMenuAdminObject=new CF_MainMenuAdmin();

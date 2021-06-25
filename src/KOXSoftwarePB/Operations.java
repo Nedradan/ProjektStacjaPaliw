@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -33,9 +34,8 @@ public class Operations {
             while(resultSet.next()){
                 LoginSession.UID = resultSet.getInt("LOG_UID");
                 LoginSession.Usertype = resultSet.getString("LOG_USERTYPE");
-                LoginSession.login = resultSet.getString("LOG_LOGIN");
-                LoginSession.password = resultSet.getString("LOG_PASSWORD");
-                
+                LoginSession.loginSession = resultSet.getString("LOG_LOGIN");
+                LoginSession.passwordSession = resultSet.getString("LOG_PASSWORD");
                 return true;
             }
             
